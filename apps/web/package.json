@@ -9,6 +9,7 @@
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@types/better-sqlite3": "^7.6.4",
     "@types/node": "^18",
+    "@types/uuid": "^9.0.1",
     "better-sqlite3": "^8.3.0",
     "daisyui": "^2.51.6",
     "drizzle-kit": "^0.17.6",
@@ -19,5 +20,10 @@
     "nuxt-icon": "^0.4.0",
     "prettier": "^2.8.8",
     "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "h3-zod": "^0.5.1",
+    "uuid": "^9.0.0",
+    "zod": "^3.21.4"
   }
 }

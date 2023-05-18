@@ -32,7 +32,7 @@ export default eventHandler(async (event) => {
     },
   })
 
-  const user = await useDb().select().from(tables.user).where(eq(tables.user.githubId, ghUser.id)).get()
+  const user = await useDb().select().from(tables.user).where(eq(tables.user.id, ghUser.id)).get()
 
   if (!user) {
     const length = (await useDb().select().from(tables.user).all()).length
@@ -40,7 +40,7 @@ export default eventHandler(async (event) => {
       await useDb()
         .insert(tables.user)
         .values({
-          githubId: ghUser.id,
+          id: ghUser.id,
         })
         .run()
     }

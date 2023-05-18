@@ -12,12 +12,19 @@ export const log = sqliteTable('log', {
 })
 
 export const project = sqliteTable('project', {
-  id: integer('id').primaryKey(),
+  id: text('id').primaryKey(),
   name: text('name').notNull(),
-  authorizedUser: integer('authorized_user').references(() => user.id),
+})
+
+export const userToProject = sqliteTable('user_to_project', {
+  userId: integer('user_id')
+    .references(() => user.id)
+    .notNull(),
+  projectId: text('project_id')
+    .references(() => project.id)
+    .notNull(),
 })
 
 export const user = sqliteTable('user', {
   id: integer('id').primaryKey(),
-  githubId: integer('github_id').notNull(),
 })

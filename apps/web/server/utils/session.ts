@@ -6,7 +6,7 @@ import { UserSession } from '@/types/UserSession'
 
 export async function getUserSession(event: H3Event) {
   const session = (await _useSession(event)).data as UserSession
-  const isAuthorizedUser = useDb().select().from(tables.user).where(eq(tables.user.githubId, session.user.id)).get()
+  const isAuthorizedUser = useDb().select().from(tables.user).where(eq(tables.user.id, session.user.id)).get()
   if (!isAuthorizedUser) {
     session.user = null
   }

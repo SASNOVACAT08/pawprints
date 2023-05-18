@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "40be53aa-caf1-413c-be6f-d18d13bfd73c",
+  "id": "e420fbe4-be04-4923-937e-790fa45b0c79",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "log": {
@@ -56,39 +56,19 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": true
         },
         "name": {
           "name": "name",
           "type": "text",
           "primaryKey": false,
           "notNull": true
-        },
-        "authorized_user": {
-          "name": "authorized_user",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
         }
       },
       "indexes": {},
-      "foreignKeys": {
-        "project_authorized_user_user_id_fk": {
-          "name": "project_authorized_user_user_id_fk",
-          "tableFrom": "project",
-          "tableTo": "user",
-          "columnsFrom": [
-            "authorized_user"
-          ],
-          "columnsTo": [
-            "id"
-          ]
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {}
     },
     "user": {
@@ -100,17 +80,54 @@
           "primaryKey": true,
           "notNull": true,
           "autoincrement": false
-        },
-        "github_id": {
-          "name": "github_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "user_to_project": {
+      "name": "user_to_project",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "project_id": {
+          "name": "project_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_to_project_user_id_user_id_fk": {
+          "name": "user_to_project_user_id_user_id_fk",
+          "tableFrom": "user_to_project",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ]
+        },
+        "user_to_project_project_id_project_id_fk": {
+          "name": "user_to_project_project_id_project_id_fk",
+          "tableFrom": "user_to_project",
+          "tableTo": "project",
+          "columnsFrom": [
+            "project_id"
+          ],
+          "columnsTo": [
+            "id"
+          ]
+        }
+      },
       "compositePrimaryKeys": {}
     }
   },

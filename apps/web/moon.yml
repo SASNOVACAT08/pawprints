@@ -1,0 +1,48 @@
+type: 'application'
+language: 'typescript'
+
+fileGroups:
+  nuxt:
+    - 'assets/**/*'
+    - 'components/**/*'
+    - 'composables/**/*'
+    - 'content/**/*'
+    - 'layouts/**/*'
+    - 'middleware/**/*'
+    - 'pages/**/*'
+    - 'plugins/**/*'
+    - 'public/**/*'
+    - 'server/**/*'
+    - 'utils/**/*'
+    - '.nuxtignore'
+    - 'app.config.*'
+    - 'app.vue'
+    - 'nuxt.config.*'
+
+tasks:
+  nuxt:
+    command: 'nuxt'
+    local: true
+
+  build:
+    command: 'nuxt build'
+    inputs:
+      - '@group(nuxt)'
+    outputs:
+      - '.nuxt'
+      - '.output'
+
+  dev:
+    command: 'nuxt dev'
+    local: true
+
+  preview:
+    command: 'nuxt preview'
+    deps:
+      - '~:build'
+    local: true
+
+  lint:
+    command: 'eslint --ext .js,.ts,.vue .'
+    inputs:
+      - '@group(nuxt)'

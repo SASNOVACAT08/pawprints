@@ -1,10 +1,16 @@
 import type { H3Event } from 'h3'
 import { sha256 } from 'ohash'
 import { defu } from 'defu'
+import { eq } from 'drizzle-orm'
 import { UserSession } from '@/types/UserSession'
 
 export async function getUserSession(event: H3Event) {
-  return (await _useSession(event)).data as UserSession
+  const session = (await _useSession(event)).data as UserSession
+  const isAuthorizedUser = useDb().select().from(tables.user).where(eq(tables.user.githubId, session.user.id)).get()
+  if (!isAuthorizedUser) {
+    session.user = null
+  }
+  return session
 }
 export async function setUserSession(event: H3Event, data: UserSession) {
   const session = await _useSession(event)

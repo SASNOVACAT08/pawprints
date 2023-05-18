@@ -1,3 +1,5 @@
+import { eq } from 'drizzle-orm'
+
 export default eventHandler(async (event) => {
   const config = useRuntimeConfig()
 
@@ -30,9 +32,23 @@ export default eventHandler(async (event) => {
     },
   })
 
+  const user = await useDb().select().from(tables.user).where(eq(tables.user.githubId, ghUser.id)).get()
+
+  if (!user) {
+    const length = (await useDb().select().from(tables.user).all()).length
+    if (length === 0) {
+      await useDb()
+        .insert(tables.user)
+        .values({
+          githubId: ghUser.id,
+        })
+        .run()
+    }
+  }
+
   await setUserSession(event, {
     user: ghUser,
   })
 
-  return sendRedirect(event, '/logs')
+  return sendRedirect(event, '/')
 })

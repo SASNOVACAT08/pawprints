@@ -8,6 +8,7 @@ node_modules
 .nitro
 .cache
 .output
+db.sqlite
 .env
 dist
 .DS_Store

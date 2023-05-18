@@ -42,6 +42,9 @@ tasks:
       - '~:build'
     local: true
 
+  generate:
+    command: 'drizzle-kit generate:sqlite'
+
   lint:
     command: 'eslint --ext .js,.ts,.vue .'
     inputs:

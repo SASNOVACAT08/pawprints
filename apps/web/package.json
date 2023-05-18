@@ -7,8 +7,12 @@
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/tailwindcss": "^6.7.0",
+    "@types/better-sqlite3": "^7.6.4",
     "@types/node": "^18",
+    "better-sqlite3": "^8.3.0",
     "daisyui": "^2.51.6",
+    "drizzle-kit": "^0.17.6",
+    "drizzle-orm": "^0.25.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nuxt": "^3.5.0",

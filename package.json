@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "moon run :dev",
     "lint": "moon run :lint",
+    "generate": "moon run web:generate",
     "moon": "moon",
     "commitlint": "commitlint",
     "cz": "cz",

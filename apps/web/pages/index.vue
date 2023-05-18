@@ -1,7 +1,13 @@
+<script setup lang="ts">
+const { loggedIn } = useUserSession()
+</script>
+
 <template>
-  <div>
-    <NuxtLink class="bg-black p-4" to="/api/auth/github" external>
-      <Icon name="uil:github" /><span>Login with GitHub</span>
-    </NuxtLink>
-  </div>
+  <section v-if="!loggedIn" class="flex min-h-screen justify-center items-center">
+    <login-github />
+  </section>
+  <section v-else class="container">
+    <h1 class="text-4xl font-bold">Welcome to the app!</h1>
+    <p class="text-xl">You are logged in!</p>
+  </section>
 </template>

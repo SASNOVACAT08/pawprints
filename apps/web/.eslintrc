@@ -1,5 +1,8 @@
 {
   "root": true,
   "extends": ["@nuxtjs/eslint-config-typescript", "prettier", "plugin:prettier/recommended"],
-  "plugins": ["prettier"]
+  "plugins": ["prettier"],
+  "rules": {
+    "import/no-named-as-default": "off"
+  }
 }

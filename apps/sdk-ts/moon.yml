@@ -1,0 +1,20 @@
+type: 'application'
+language: 'typescript'
+
+fileGroups:
+  sdk:
+    - 'src/**/*'
+    - 'tsconfig.json'
+
+tasks:
+  build:
+    command: 'tsup src/logger.ts --dts --format cjs,esm'
+    inputs:
+      - '@group(sdk)'
+    outputs:
+      - 'dist/**/*'
+
+  lint:
+    command: 'eslint --ext .js,.ts .'
+    inputs:
+      - '@group(sdk)'

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "nodenext",
+    "declaration": true,
+    "skipLibCheck": true,
+    "outDir": "../../.moon/cache/types/apps/sdk-ts"
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

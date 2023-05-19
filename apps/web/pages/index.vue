@@ -21,5 +21,6 @@ const { data: projects } = useFetch('/api/project')
         <project-form />
       </label>
     </label>
+    <add-user-form />
   </section>
 </template>

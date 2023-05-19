@@ -1,15 +1,7 @@
 <script setup lang="ts">
 const { loggedIn } = useUserSession()
 
-async function createProject() {
-  const { data } = await useFetch('/api/project', {
-    method: 'POST',
-    body: JSON.stringify({
-      name: 'My new project',
-    }),
-  })
-  console.log(data)
-}
+const { data: projects } = useFetch('/api/project')
 </script>
 
 <template>
@@ -17,8 +9,17 @@ async function createProject() {
     <login-github />
   </section>
   <section v-else class="container">
-    <h1 class="text-4xl font-bold">Welcome to the app!</h1>
-    <p class="text-xl">You are logged in!</p>
-    <button @click="createProject">Create project</button>
+    <label for="my-modal" class="btn">create Project</label>
+    <div v-for="project in projects" :key="project.id">
+      <p>{{ project.name }}</p>
+    </div>
+
+    <!-- Put this part before </body> tag -->
+    <input id="my-modal" type="checkbox" class="modal-toggle" />
+    <label for="my-modal-4" class="modal cursor-pointer">
+      <label class="modal-box relative" for="">
+        <project-form />
+      </label>
+    </label>
   </section>
 </template>

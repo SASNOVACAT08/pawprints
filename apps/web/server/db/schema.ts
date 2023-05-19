@@ -8,7 +8,10 @@ export const log = sqliteTable('log', {
     .notNull(),
   environment: text('environment'),
   content: text('content'),
-  createdAt: integer('created_at').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  projectId: text('project_id')
+    .references(() => project.id)
+    .notNull(),
 })
 
 export const project = sqliteTable('project', {

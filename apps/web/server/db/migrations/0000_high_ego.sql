@@ -4,7 +4,9 @@ CREATE TABLE `log` (
 	`type` text DEFAULT ('info') NOT NULL,
 	`environment` text,
 	`content` text,
-	`created_at` integer NOT NULL
+	`created_at` integer NOT NULL,
+	`project_id` text NOT NULL,
+	FOREIGN KEY (`project_id`) REFERENCES `project`(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `project` (

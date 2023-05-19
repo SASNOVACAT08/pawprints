@@ -1,25 +1,16 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession()
+definePageMeta({
+  middleware: ['auth'],
+})
 
 const { data: projects } = useFetch('/api/project')
 </script>
 
 <template>
-  <section v-if="!loggedIn" class="flex min-h-screen justify-center items-center">
-    <login-github />
-  </section>
-  <section v-else class="container">
-    <label for="my-modal" class="btn">create Project</label>
-    <div v-for="project in projects" :key="project.id">
-      <p>{{ project.name }}</p>
-    </div>
-
-    <!-- Put this part before </body> tag -->
-    <input id="my-modal" type="checkbox" class="modal-toggle" />
-    <label for="my-modal-4" class="modal cursor-pointer">
-      <label class="modal-box relative" for="">
-        <project-form />
-      </label>
-    </label>
+  <section>
+    <section class="grid grid-rows-4 grid-cols-4 gap-4">
+      <project-card v-for="project in projects" :id="project.id" :key="project.id" :name="project.name" />
+      <project-create-card />
+    </section>
   </section>
 </template>

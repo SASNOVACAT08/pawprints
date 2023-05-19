@@ -22,7 +22,9 @@
     "wrangler": "^3.0.0"
   },
   "dependencies": {
+    "@formkit/icons": "^0.17.2",
     "@formkit/nuxt": "^0.17.2",
+    "@formkit/themes": "^0.17.2",
     "h3-zod": "^0.5.1",
     "uuid": "^9.0.0",
     "zod": "^3.21.4"

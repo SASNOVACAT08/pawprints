@@ -1,9 +1,9 @@
 import { useValidatedBody, z } from 'h3-zod'
 
 export default eventHandler(async (event) => {
-  const { title, type, environment, projectId, createdAt } = await useValidatedBody(event, {
+  const { title, level, environment, projectId, createdAt } = await useValidatedBody(event, {
     title: z.string().min(1).max(140),
-    type: z.enum(['info', 'warning', 'error']),
+    level: z.enum(['info', 'warning', 'error']),
     environment: z.string().min(1).max(140),
     projectId: z.string().min(1).max(140),
     createdAt: z.coerce.date(),
@@ -12,7 +12,7 @@ export default eventHandler(async (event) => {
     .insert(tables.log)
     .values({
       title,
-      type: type as any,
+      level: level as any,
       environment,
       createdAt,
       projectId,

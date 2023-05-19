@@ -1,7 +1,7 @@
 CREATE TABLE `log` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`title` text NOT NULL,
-	`type` text DEFAULT ('info') NOT NULL,
+	`level` text DEFAULT ('info') NOT NULL,
 	`environment` text,
 	`content` text,
 	`created_at` integer NOT NULL,

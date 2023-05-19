@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "dc9a83d6-bc2e-44b0-babf-c13d83d60010",
+  "id": "f73c7bef-432d-4b97-a47c-1cd38447a388",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "log": {
@@ -20,8 +20,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "type": {
-          "name": "type",
+        "level": {
+          "name": "level",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
